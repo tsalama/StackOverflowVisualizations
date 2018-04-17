@@ -248,68 +248,6 @@ function maxFrequency() {
     });
 }
 
-function filter() {
-
-    maxValue = d3.select('#maximum')
-        .node()
-        .value;
-    var exampleData = createRandomData(maxValue);
-
-    maxValue = d3.max(exampleData);
-
-    // document.getElementById("val").innerHTML = maxValue;
-
-    xscale.domain(d3.range(exampleData.length));
-
-    yscale.domain([0, maxValue]);
-
-    color_scale.domain([0, max_value]);
-
-    var bars = svg.selectAll(".bar")
-        .data(exampleData);
-
-    bars
-        .enter()
-        .append('rect')
-        .attr('class', 'bar')
-        .attr("fill", 'black')
-        .attr('width', xscale.bandwidth())
-        .attr('height', 0)
-        .attr('y', height)
-        .merge(bars)
-        .transition()
-        .duration(duration)
-        .attr("height", function(d, i) {
-            return height - yscale(d);
-        })
-        .attr("y", function(d, i) {
-            return yscale(d);
-        })
-        .attr("width", xscale.bandwidth())
-        .attr("x", function(d, i) {
-            return xscale(i);
-        })
-
-
-    bars
-        .exit()
-        .transition()
-        .duration(duration)
-        .attr('height', 0)
-        .attr('y', height)
-        .remove();
-
-    svg.select('.x.axis')
-        .transition()
-        .duration(duration)
-        .call(xaxis);
-
-    svg.select('.y.axis')
-        .transition()
-        .duration(duration)
-        .call(yaxis);
-}
-
 function topsort() {
     attr = document.getElementById("attribute");
     att = attr.options[attr.selectedIndex].value;
@@ -392,16 +330,6 @@ function topsort() {
     });    
 }
 
-function createRandomData(maxValue) {
-    var numDataItems = Math.floor((Math.random() * 30) + 1);
-    var d = [];
-    for (var i = 0; i < numDataItems; i++) {
-        d.push(Math.floor((Math.random() * maxValue) + 1));
-    }
-
-    return d;
-}
-
 function SetMax (max) {
     var slider = document.getElementById ("maxFreq");
 
@@ -450,4 +378,3 @@ select_att.on('change', function() {
 })
 
 update('questions', 'vote');
-// filter();
