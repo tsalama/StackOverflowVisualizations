@@ -1617,7 +1617,8 @@
 	}
 
 	body {
-		background-image: url("../../images/banner.jpg");
+		/*background-image: url("../../images/banner.jpg");*/
+		background-color: #0D47A1;
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
