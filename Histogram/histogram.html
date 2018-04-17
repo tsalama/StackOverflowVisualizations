@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stack Overflow Dataset</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-queue/3.0.4/d3-queue.min.js"></script>
+    <style>
+        html, body, #vis {
+            height: 70%;
+            width: 95%;
+            margin: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-orange.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="histogram.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100i|Roboto:100|Roboto:100b" rel="stylesheet">
+</head>
+<body>
+    <h1> Attribute Histograms </h1>
+
+    <div id="typeChoice">
+        <h4> Post Type </h4>
+        <form>
+            <select name="type" id="type">
+                <option value="questions">Questions</option>
+                <option value="unacc_answers">Unnaccepted Answers</option>
+                <option value="acc_answers">Accepted Answers</option>
+            </select>
+        </form>
+    </div>
+    <div id="attrChoice">
+        <h4> Attribute </h4>
+        <form>
+            <select name="attribute" id="attribute">
+                <option value="vote">Number of Votes</option>
+                <option value="arates">User Acceptance Rates</option>
+                <option value="rep">User Reputation (Log)</option>                                
+                <option value="char">Post Length (# Characters)</option>
+                <option value="tags">Number of Tags</option>
+            </select>
+        </form>   
+    </div>
+    <div id="top10">
+        <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="topsort()" value="Top + Sort"/>
+    </div>
+    <div id="maxFrequency" >
+        <h4> Max Frequency </h4>
+        <input class="mdl-slider mdl-js-slider" type="range" value="148335" min="0" max="148335" id="maxFreq" onchange="maxFrequency(this.value)">
+        <label id = "val"> </label>
+    </div>
+<!--     <div id="filterChoice" >
+        <input class="mdl-slider mdl-js-slider" type="range" value="100" min="0" max="100" id="maximum">
+        <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="filter()" value="Reputation"/>
+     <label id = "val"> Value </label>
+    </div> -->
+    <div id="vis"></div>
+    <script src="histogram.js">
+    </script>
+</body>
+</html>

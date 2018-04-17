@@ -1,0 +1,113 @@
+
+body {
+  background-color: black;
+  color: white;
+  padding:30px;
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  line-height: 0.1em;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  display: inline-block; //Or display: inline; 
+}
+
+h4 {
+  text-align: center;
+  font-weight:bold;
+}
+
+#typeChoice {
+      display: inline-block; //Or display: inline; 
+      padding:10px;
+}
+
+#attrChoice {
+      display: inline-block; //Or display: inline; 
+      padding:10px;
+}
+
+#maxFrequency {
+      display: inline-block; //Or display: inline; 
+      padding:10px;
+      width:850px;
+}
+
+#filterChoice {
+      display: inline-block; //Or display: inline; 
+      padding:10px;
+}
+
+#top10{
+      display: inline-block; //Or display: inline; 
+      padding:10px;
+}
+
+text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+}
+
+#maximum {
+    display: inline-block; //Or display: inline; 
+    color:white;
+}
+
+div.tooltip { 
+    position: absolute;     
+    text-align: center;     
+    width: 120px;          
+    height: 40px;         
+    padding: 2px;       
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color:black;
+    background: white; 
+    border-radius: 90px;     
+    pointer-events: none;     
+}
+
+#vis {
+    border: 5px solid white;
+    color: white;
+    background-color: #f69c55;
+}
+
+.label {
+  font-family: 'Roboto', sans-serif;
+  font-size:20px;
+}
+
+label {
+  font-family: 'Roboto', sans-serif;
+  font-size:15px;
+  margin-left: 400px;
+}
+
+.bar:hover {
+  fill: blue;
+}
+
+.mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab {
+  color: black;
+  background-color: rgb(33,150,243);
+  margin-left:25px;
+  font-weight: bold;
+  display: inline-block; //Or display: inline; 
+  font-size: 12px;
+}
+
+.mdl-slider.is-upgraded {
+  display: inline-block; //Or display: inline;
+  background-color: #f69c55;
+  color:white; 
+}
