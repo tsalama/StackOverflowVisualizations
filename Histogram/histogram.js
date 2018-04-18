@@ -377,4 +377,4 @@ select_att.on('change', function() {
     updateAtt(this.value);
 })
 
-update('questions', 'vote');
+update('questions', 'char');
