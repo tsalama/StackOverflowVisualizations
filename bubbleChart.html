@@ -4,10 +4,15 @@
   <script src="d3.min.js"></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100i|Roboto:100" rel="stylesheet">
   <script src="d3-tip.js"></script>
   <style>
 
-    body { margin:0; position:fixed; top:0; right:0; bottom:0; left:0; }
+    body { margin:0; position:fixed; top:0; right:0; bottom:0; left:0; background-color: #EEEEEE;}
+
+    text {
+        font-family: 'Roboto', sans-serif;
+    }
   
     .label { 
       font-size: 1em; 
@@ -46,11 +51,22 @@
     top: 100%;
     left: 0;
   }
+
+  h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  color: #F48024;
+  text-align: center;
+  line-height: 0.1em;
+  font-weight: bold;
+  }
  
 </style>
 
 </head>
-
+<h1>
+   <br/><br/><br/><br/> Tags Bubble Chart <br/><br/>
+</h1>
 <body>
     <div class="container" id="graphic"></div>
     <svg width="3000" height="3000" id="outerChart" class="outerChart">  <circle cx="450" cy="450" r="450" stroke="black"  fill="transparent" />

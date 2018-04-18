@@ -4,9 +4,16 @@
   <script src="d3.min.js"></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100i|Roboto:100" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-orange.min.css" />
   <script src="d3-tip.js"></script>
   <style>
-
+  text {
+  font-family: 'Roboto', sans-serif;
+  }
+body {
+  background-color: #EEEEEE;
+}
 button {
   position: absolute;
   left: 10px;
@@ -27,16 +34,28 @@ button {
   background-color: green !important;
 }
 
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  color: #F48024;
+  text-align: center;
+  line-height: 0.1em;
+  font-weight: bold;
+}
+
 </style>
 </head>
+
 <body>
-   
+    <h1>
+      <br/><br/><br/><br/><br/><br/>Emotional Textual Stream Graph
+    </h1>
     <div class="container" id="graphic"></div>
          <svg  id="chart" class="chart"  width="100" height="100"></svg>
           <div style="text-align:right;padding-right:400px;">
           
-            <input type="button" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
-            <input type="button"  id="votes" value="Votes" onclick="update(this.id)"></imput>
+            <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
+            <input type="button"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="votes" value="Votes" onclick="update(this.id)"></imput>
       
             <input type="checkbox" id="questions" onclick="selectValue(this.id)"> Questions</input>
             <input type="checkbox" id="answers" onclick="selectValue(this.id)"> Answers</input>
@@ -1340,7 +1359,7 @@ update(this.id);  });
 update(this.id);  });
 
   document.getElementById("questions").checked = true;
-  document.getElementById("votes").style.backgroundColor = "white";
+  document.getElementById("votes").style.backgroundColor = "#F48024";
   document.getElementById("reputations").style.backgroundColor = "darkgrey";
 
 function selectValue(id)
@@ -1385,8 +1404,8 @@ function update(id)
 {
 if(id)
 {
- document.getElementById("reputations").style.backgroundColor = "white";
- document.getElementById("votes").style.backgroundColor = "white";
+ document.getElementById("reputations").style.backgroundColor = "#F48024";
+ document.getElementById("votes").style.backgroundColor = "#F48024";
  document.getElementById(id).style.backgroundColor = "darkgrey";
 }
 

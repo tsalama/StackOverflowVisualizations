@@ -8,7 +8,7 @@
     <body>
         <div class="header">
             <h1>
-                Question Traffic HeatMap Clock<br/><br/><br/><br/><br/><br/>
+                <br/>Question Traffic HeatMap Clock<br/><br/><br/><br/><br/><br/>
             </h1>
         </div>
         <div class="legend">
@@ -16,7 +16,7 @@
         <div class="chart"></div>
     </body>
     <script>
-        var back_ground_color = "#f69c55";
+        var back_ground_color = "#F48024";
         d3.select('body').style("background-color",back_ground_color);
         d3.select(".logo").style("background-color", "#99ffff");
         d3.select(".legend").append("table")
@@ -1077,7 +1077,7 @@
         }
         function add_row_to_table(lead_word, data, m, lead_word2, data2, m2){
             var row = table.append("tr");
-            add_cell(row, "", "#f69c55");
+            add_cell(row, "", "#F48024");
             row.append("td")
                 .text(lead_word)
                 .style("font-weight", "bold")
@@ -1089,11 +1089,11 @@
             add_cell(row, " < " + Math.ceil(data[2]), "#7a1f5c");
             add_cell(row, " < " + (m+1), "#990000");
             if(lead_word2 != null){
-                add_cell(row, "", "#f69c55");
-                add_cell(row, "", "#f69c55");
-                add_cell(row, "", "#f69c55");
-                add_cell(row, "", "#f69c55");
-                add_cell(row, "", "#f69c55");
+                add_cell(row, "", "#F48024");
+                add_cell(row, "", "#F48024");
+                add_cell(row, "", "#F48024");
+                add_cell(row, "", "#F48024");
+                add_cell(row, "", "#F48024");
                 row.append("td")
                     .text(lead_word2)
                     .style("font-weight", "bold")

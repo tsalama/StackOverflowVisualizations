@@ -3136,7 +3136,7 @@
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		background-color: #f69c55;
+		background-color: #F48024;
 		box-shadow: 0 0 0.25em 0 rgba(0, 0, 0, 0.15);
 		cursor: default;
 		font-weight: 600;
@@ -3435,7 +3435,7 @@
 			-webkit-pointer-events: none;
 			-ms-pointer-events: none;
 			pointer-events: none;
-			background-color: #f69c55;
+			background-color: #F48024;
 			content: '';
 			display: block;
 			height: 100%;

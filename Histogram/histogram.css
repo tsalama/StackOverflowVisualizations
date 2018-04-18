@@ -7,7 +7,7 @@ body {
 h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 50px;
-  color: white;
+  color: #F48024;
   text-align: center;
   line-height: 0.1em;
 }
@@ -84,7 +84,7 @@ div.tooltip {
 #vis {
     border: 5px solid white;
     color: white;
-    background-color: #f69c55;
+    background-color: #F48024;
 }
 
 .label {
@@ -107,6 +107,6 @@ div.tooltip {
 
 .mdl-slider.is-upgraded {
   display: inline-block; //Or display: inline;
-  background-color: #f69c55;
+  background-color: #F48024;
   color:white; 
 }
