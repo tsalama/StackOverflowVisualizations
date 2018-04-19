@@ -2,15 +2,14 @@
 <head>
   <meta charset="utf-8">
   <script src="d3.min.js"></script>
-  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:100i|Roboto:100" rel="stylesheet">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-orange.min.css" />
+
   <script src="d3-tip.js"></script>
   <style>
-  text {
-  font-family: 'Roboto', sans-serif;
-  }
+ 
 body {
   background-color: #EEEEEE;
 }
@@ -30,8 +29,12 @@ button {
 .axis text {
   font: 10px sans-serif;
 }
-.active {
-  background-color: green !important;
+
+  svg {
+  margin: 0 auto; 
+  height: auto !important; 
+  width: auto !important;
+  display: block;
 }
 
 h1 {
@@ -42,20 +45,45 @@ h1 {
   line-height: 0.1em;
   font-weight: bold;
 }
-
 </style>
 </head>
-
 <body>
-    <h1>
-      <br/><br/><br/><br/><br/><br/>Emotional Textual StreamGraph
+      <h1 style=" font-family: 'Roboto', sans-serif;">
+      <br/><br/><br/><br/><br/><br/>Emotional Textual Stream Graph
     </h1>
     <div class="container" id="graphic"></div>
-         <svg  id="chart" class="chart"  width="100" height="100"></svg>
-          <div style="text-align:right;padding-right:400px;">
-          
-            <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
-            <input type="button"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="votes" value="Votes" onclick="update(this.id)"></imput>
+     <svg width="4000" height="180" style="margin:0;max-width:4000; max-height:180;">
+       <g class="legend" transform="translate(1500,55)">
+  <text x="15" y="30" font-size="102px">a</text>  <text x="75" y="10" font-size="13px">0.6</text>
+</g>
+<g class="legend" transform="translate(1510,115)">
+  <text x="18" y="15" font-size="68px">a</text>  
+</g>
+<g class="legend" transform="translate(1520,140)">
+  <text x="17" y="15" font-size="34px">a</text>   
+</g>
+<g class="legend" transform="translate(1525,155)">
+  <text x="18" y="15" font-size="17px">a</text> 
+</g>
+<g class="legend" transform="translate(1525,170)">
+  <text x="20" y="10" font-size="10px">a</text>  <text x="45" y="9" font-size="13px">0.01</text>
+</g>
+
+      <g class="legend" transform="translate(1600,100)">
+  <rect width="18" height="18" style="fill: deepskyblue; stroke: deepskyblue; opacity:0.4;"></rect>
+  <text x="24" y="14">Positive words</text>
+</g>
+<g class="legend" transform="translate(1600,120)">
+  <rect width="18" height="18" style="fill: crimson; stroke: crimson;opacity:0.4"></rect>
+  <text x="22" y="14">Negative words</text>
+</g>
+
+</svg>
+
+          <div style="text-align:right;padding-right:800px;">
+         
+            <input type="button" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
+            <input type="button"  id="votes" value="Votes" onclick="update(this.id)"></imput>
       
             <input type="checkbox" id="questions" onclick="selectValue(this.id)"> Questions</input>
             <input type="checkbox" id="answers" onclick="selectValue(this.id)"> Answers</input>
@@ -179,15 +207,15 @@ reputationQuestionText=[
 {"freqText":"work","value":0.2195945946,"rep":4900,"yValue":1.6},
 {"freqText":"works","value":0.1486486486,"rep":5000,"yValue":1},
 {"freqText":"right","value":0.097972973+0.01,"rep":4550,"yValue":1},
-{"freqText":"better","value":0.0844594595+0.01,"rep":5050,"yValue":2.25},
-{"freqText":"fine","value":0.0844594595+0.01,"rep":5000,"yValue":2},
+{"freqText":"better","value":0.0844594595+0.01,"rep":5000,"yValue":2},
+{"freqText":"fine","value":0.0844594595+0.01,"rep":5000,"yValue":2.2},
 {"freqText":"top","value":0.0743243243+0.01,"rep":5050,"yValue":0.75},
 {"freqText":"correct","value":0.0709459459+0.01,"rep":5300,"yValue":1.4},
 {"freqText":"good","value":0.0540540541+0.01,"rep":5300,"yValue":0.8},
 {"freqText":"properly","value":0.0472972973+0.02+0.01,"rep":4600,"yValue":1.3},
-{"freqText":"pretty","value":0.0521327014+0.01,"rep":4600,"yValue":1.5},
+{"freqText":"pretty","value":0.0521327014+0.01,"rep":4500,"yValue":1.5},
 {"freqText":"easy","value":0.0379146919+0.03+0.01,"rep":4950,"yValue":1.3},
-{"freqText":"best","value":0.0379146919+0.03+0.01,"rep":5200,"yValue":2},
+{"freqText":"best","value":0.0379146919+0.03+0.01,"rep":5300,"yValue":2},
 
 {"freqText":"like","value":0.5734597156,"rep":6000,"yValue":1.6},
 {"freqText":"work","value":0.2180094787,"rep":5800,"yValue":0.8},
@@ -240,8 +268,8 @@ reputationQuestionText=[
 {"freqText":"unable","value":0.018714205+0.05+0.01,"rep":400,"yValue":-0.6},
 {"freqText":"false","value":0.0186738727+0.05+0.01,"rep":100,"yValue":-0.35},
 {"freqText":"sorry","value":0.0211202656+0.04+0.01,"rep":800,"yValue":-0.7},
-{"freqText":"problem","value":0.2498058504+0.03,"rep":650,"yValue":-1.50},
-{"freqText":"object","value":0.1801190784+0.04,"rep":150,"yValue":-1.0},
+{"freqText":"problem","value":0.2498058504+0.03,"rep":550,"yValue":-1.50},
+{"freqText":"object","value":0.1801190784+0.04,"rep":100,"yValue":-1.0},
 {"freqText":"wrong","value":0.0873932177+0.01,"rep":450,"yValue":-1.80},
 {"freqText":"issue","value":0.074812322+0.01,"rep":700,"yValue":-0.50},
 {"freqText":"errors","value":0.0371214082+0.03+0.01,"rep":600,"yValue":-0.8},
@@ -254,9 +282,9 @@ reputationQuestionText=[
 {"freqText":"issues","value":0.0206640033+0.04+0.01,"rep":1100,"yValue":-0.7},
 {"freqText":"error","value":0.224438331,"rep":1400,"yValue":-1},
 {"freqText":"object","value":0.1944062357,"rep":1600,"yValue":-1.70},
-{"freqText":"problem","value":0.181568088,"rep":1500,"yValue":-0.25},
-{"freqText":"wrong","value":0.0729023384+0.01,"rep":1500,"yValue":-0.40},
-{"freqText":"issue","value":0.0683172856+0.01,"rep":1700,"yValue":-0.6},
+{"freqText":"problem","value":0.181568088,"rep":1400,"yValue":-0.25},
+{"freqText":"wrong","value":0.0729023384+0.01,"rep":1750,"yValue":-0.40},
+{"freqText":"issue","value":0.0683172856+0.01,"rep":1650,"yValue":-0.6},
 {"freqText":"static","value":0.0440165062+0.02+0.01,"rep":1250,"yValue":-0.5},
 {"freqText":"errors","value":0.0307198533+0.03+0.01,"rep":1350,"yValue":-1.40},
 {"freqText":"problems","value":0.0215497478+0.04+0.01,"rep":1550,"yValue":-1.15},
@@ -272,11 +300,11 @@ reputationQuestionText=[
 {"freqText":"errors","value":0.0431943747+0.02+0.01,"rep":2700,"yValue":-1.1},
 {"freqText":"static","value":0.0356604721+0.03+0.01,"rep":2600,"yValue":-1.30},
 {"freqText":"problems","value":0.0266197891+0.04+0.01,"rep":2200,"yValue":-1.40},
-{"freqText":"fails","value":0.0231039679+0.04+0.01,"rep":2200,"yValue":-1.10},
-{"freqText":"bug","value":0.0190858865+0.05+0.01,"rep":2200,"yValue":-0.2},
+{"freqText":"fails","value":0.0231039679+0.04+0.01,"rep":2100,"yValue":-1.10},
+{"freqText":"bug","value":0.0190858865+0.05+0.01,"rep":2100,"yValue":-0.2},
 
 {"freqText":"unfortunately","value":0.022556391+0.04+0.01,"rep":3000,"yValue":-0.9},
-{"freqText":"doubt","value":0.025290499+0.04+0.01,"rep":3100,"yValue":-1.2},
+{"freqText":"doubt","value":0.025290499+0.04+0.01,"rep":3000,"yValue":-1.2},
 {"freqText":"issues","value":0.028708134+0.04+0.01,"rep":3000,"yValue":-0.45},
 {"freqText":"error","value":0.1994017946,"rep":3300,"yValue":-0.70},
 {"freqText":"problem","value":0.1694915254,"rep":3300,"yValue":-0.2},
@@ -287,11 +315,11 @@ reputationQuestionText=[
 {"freqText":"static","value":0.0269192423+0.04+0.01,"rep":3200,"yValue":-1.50},
 {"freqText":"fails","value":0.0269192423+0.04+0.01,"rep":2900,"yValue":-0.7},
 {"freqText":"bug","value":0.0259222333+0.04+0.01,"rep":2900,"yValue":-1.50},
-{"freqText":"problems","value":0.0239282154+0.04+0.01,"rep":3450,"yValue":-1.3},
+{"freqText":"problems","value":0.0239282154+0.04+0.01,"rep":3350,"yValue":-1.3},
 
 {"freqText":"unable","value":0.026993865+0.04+0.01,"rep":3800,"yValue":-1.30},
-{"freqText":"strange","value":0.0245398773+0.04+0.01,"rep":4200,"yValue":-0.7},
-{"freqText":"unknown","value":0.0588957055+0.01,"rep":3850,"yValue":-0.55},
+{"freqText":"strange","value":0.0245398773+0.04+0.01,"rep":4100,"yValue":-0.7},
+{"freqText":"unknown","value":0.0588957055+0.01,"rep":3800,"yValue":-0.55},
 {"freqText":"problem","value":0.1834319527,"rep":4000,"yValue":-1},
 {"freqText":"error","value":0.1701183432,"rep":3800,"yValue":-1.70},
 {"freqText":"object","value":0.1360946746,"rep":4200,"yValue":-0.20},
@@ -317,7 +345,7 @@ reputationQuestionText=[
 {"freqText":"confused","value":0.024291498+0.04+0.01,"rep":4550,"yValue":-1.15},
 {"freqText":"static","value":0.024291498+0.04+0.01,"rep":5000,"yValue":-1.9},
 
-{"freqText":"failed","value":0.0198675497+0.05+0.01,"rep":6200,"yValue":-0.5},
+{"freqText":"failed","value":0.0198675497+0.05+0.01,"rep":6100,"yValue":-0.5},
 {"freqText":"bug","value":0.0198675497+0.05+0.01,"rep":5700,"yValue":-0.5},
 {"freqText":"errors","value":0.0314569536+0.03+0.01,"rep":6200,"yValue":-1.20},
 {"freqText":"problem","value":0.2128378378,"rep":6000,"yValue":-1.55},
@@ -327,15 +355,15 @@ reputationQuestionText=[
 {"freqText":"issue","value":0.0540540541+0.01,"rep":6000,"yValue":-1.1},
 {"freqText":"static","value":0.0472972973+0.02+0.01,"rep":6000,"yValue":-0.7},
 {"freqText":"fail","value":0.0439189189+0.02+0.01,"rep":5600,"yValue":-0.2},
-{"freqText":"garbage","value":0.0405405405+0.02+0.01,"rep":6200,"yValue":-0.9},
+{"freqText":"garbage","value":0.0405405405+0.02+0.01,"rep":6100,"yValue":-0.9},
 {"freqText":"fails","value":0.0371621622+0.03+0.01,"rep":6100,"yValue":-1.7},
-{"freqText":"complex","value":0.0337837838+0.03+0.01,"rep":5700,"yValue":-0.8},
+{"freqText":"complex","value":0.0337837838+0.03+0.01,"rep":5600,"yValue":-0.8},
 
 {"freqText":"failure","value":0.0331753555+0.03+0.01,"rep":6750,"yValue":-2.4},
-{"freqText":"unable","value":0.0331753555+0.03+0.01,"rep":6700,"yValue":-0.6},
+{"freqText":"unable","value":0.0331753555+0.03+0.01,"rep":6600,"yValue":-0.6},
 {"freqText":"unknown","value":0.1563981043,"rep":6700,"yValue":-1.20},
 {"freqText":"error","value":0.2764227642,"rep":6800,"yValue":-2.1},
-{"freqText":"problem","value":0.2398373984,"rep":6800,"yValue":-0.4},
+{"freqText":"problem","value":0.2398373984,"rep":6850,"yValue":-0.4},
 {"freqText":"object","value":0.174796748,"rep":7000,"yValue":-0.9},
 {"freqText":"wrong","value":0.1097560976,"rep":7100,"yValue":-1.40},
 {"freqText":"issue","value":0.093495935+0.01,"rep":6500,"yValue":-0.9},
@@ -451,7 +479,7 @@ reputationAnswersText=
 {"freqText":"good","value":0.04048583+0.02+0.01,"rep":4700,"yValue":0.9},
 {"freqText":"support","value":0.0384615385+0.03+0.01,"rep":4750,"yValue":2.0},
 
-{"freqText":"best","value":0.0463576159+0.02+0.01,"rep":5700,"yValue":2.3},
+{"freqText":"best","value":0.0463576159+0.02+0.01,"rep":5900,"yValue":2.4},
 {"freqText":"well","value":0.0463576159+0.02+0.01,"rep":5750,"yValue":0.1},
 {"freqText":"wonder","value":0.048013245+0.02+0.01,"rep":5800,"yValue":0.5},
 {"freqText":"like","value":0.5878378378+0.01,"rep":5900,"yValue":1.70},
@@ -463,18 +491,18 @@ reputationAnswersText=
 {"freqText":"top","value":0.0743243243+0.01,"rep":6000,"yValue":1},
 {"freqText":"correct","value":0.0709459459+0.01,"rep":5600,"yValue":1},
 {"freqText":"good","value":0.0540540541+0.01,"rep":6100,"yValue":0.4},
-{"freqText":"properly","value":0.0472972973+0.02+0.01,"rep":6200,"yValue":1.2},
+{"freqText":"properly","value":0.0472972973+0.02+0.01,"rep":6150,"yValue":1.2},
 
 {"freqText":"easy","value":0.0379146919+0.03+0.01,"rep":7100,"yValue":2.40},
 {"freqText":"best","value":0.0379146919+0.03+0.01,"rep":6900,"yValue":3.1},
 {"freqText":"pretty","value":0.0521327014+0.01,"rep":6600,"yValue":2.2},
 {"freqText":"better","value":0.0568720379+0.01,"rep":6500,"yValue":0.50},
 {"freqText":"like","value":0.5487804878+0.01,"rep":6800,"yValue":0.8},
-{"freqText":"works","value":0.1951219512+0.01,"rep":6850,"yValue":2.7},
-{"freqText":"work","value":0.1341463415+0.01,"rep":6800,"yValue":1.6},
-{"freqText":"fine","value":0.1016260163+0.01,"rep":6800,"yValue":2.3},
-{"freqText":"right","value":0.1016260163+0.01,"rep":7000,"yValue":0.25},
-{"freqText":"good","value":0.0894308943+0.01,"rep":7000,"yValue":2},
+{"freqText":"works","value":0.1951219512+0.01,"rep":6900,"yValue":2.7},
+{"freqText":"work","value":0.1341463415+0.01,"rep":6880,"yValue":1.6},
+{"freqText":"fine","value":0.1016260163+0.01,"rep":6800,"yValue":2.4},
+{"freqText":"right","value":0.1016260163+0.01,"rep":7100,"yValue":0.25},
+{"freqText":"good","value":0.0894308943+0.01,"rep":7000,"yValue":2.1},
 {"freqText":"correct","value":0.081300813+0.01,"rep":6690,"yValue":0.1},
 {"freqText":"well","value":0.0691056911+0.01,"rep":6550,"yValue":0.3},
 {"freqText":"support","value":0.0650406504+0.01,"rep":6700,"yValue":1.9},
@@ -718,16 +746,16 @@ votesQuestions=
 
 votesQuestionText=[
 
-{"freqText":"good","value":0.039645413294662486+0.02,"rep":0.7,"yValue":0.8},
+{"freqText":"good","value":0.039645413294662486+0.02,"rep":0.6,"yValue":0.8},
 {"freqText":"correctly","value":0.032948440543838005+0.02,"rep":-0.1,"yValue":1.9},
 {"freqText":"like","value":0.4327589904911704+0.02,"rep":1,"yValue":1.20},
 {"freqText":"work","value":0.1655108314863802,"rep":2,"yValue":0.8},
-{"freqText":"works","value":0.1324801601487095,"rep":1.5,"yValue":2.1},
+{"freqText":"works","value":0.1324801601487095,"rep":1.8,"yValue":2.1},
 {"freqText":"fine","value":0.09087009365839709,"rep":-0.5,"yValue":0.8},
-{"freqText":"right","value":0.0785014656466719,"rep":1.4,"yValue":1.85},
-{"freqText":"correct","value":0.06041324086651891,"rep":1.8,"yValue":1.1},
+{"freqText":"right","value":0.0785014656466719,"rep":1.2,"yValue":1.9},
+{"freqText":"correct","value":0.06041324086651891,"rep":2,"yValue":1.1},
 {"freqText":"well","value":0.058697361835990565,"rep":-0.5,"yValue":1.5},
-{"freqText":"appreciated","value":0.047401158218345604+0.02,"rep":2,"yValue":1.7},
+{"freqText":"appreciated","value":0.047401158218345604+0.02,"rep":2,"yValue":1.75},
 {"freqText":"better","value":0.04718667333952956+0.02,"rep":1,"yValue":1.1},
 {"freqText":"thank","value":0.04361192535926217+0.02,"rep":0.3,"yValue":1},
 {"freqText":"best","value":0.05259175179720015,"rep":-0.5,"yValue":1.2},
@@ -738,271 +766,271 @@ votesQuestionText=[
 {"freqText":"works","value":0.13074204946996468,"rep":4.1,"yValue":0.8},
 {"freqText":"fine","value":0.09275618374558305,"rep":4.2,"yValue":2.5},
 {"freqText":"well","value":0.08480565371024736,"rep":4.3,"yValue":2.3},
-{"freqText":"right","value":0.07773851590106007,"rep":4,"yValue":1.2},
-{"freqText":"correct","value":0.0636042402826855,"rep":3.4,"yValue":1},
-{"freqText":"good","value":0.061837455830388695,"rep":2.6,"yValue":2},
-{"freqText":"better","value":0.060954063604240286,"rep":3.1,"yValue":1.15},
-{"freqText":"support","value":0.052120141342756186,"rep":3.2,"yValue":0.8},
-{"freqText":"worked","value":0.03885135135135135+0.02,"rep":4.2,"yValue":1.40},
+{"freqText":"right","value":0.07773851590106007,"rep":4.1,"yValue":1.1},
+{"freqText":"correct","value":0.0636042402826855,"rep":3.2,"yValue":1.05},
+{"freqText":"good","value":0.061837455830388695,"rep":2.5,"yValue":1.95},
+{"freqText":"better","value":0.060954063604240286,"rep":3.1,"yValue":1.25},
+{"freqText":"support","value":0.052120141342756186,"rep":3.15,"yValue":0.85},
+{"freqText":"worked","value":0.03885135135135135+0.02,"rep":4.2,"yValue":1.30},
 
 {"freqText":"like","value":0.48324022346368717,"rep":6,"yValue":0.8},
-{"freqText":"work","value":0.20670391061452514,"rep":6,"yValue":2.4},
+{"freqText":"work","value":0.20670391061452514,"rep":6,"yValue":2.35},
 {"freqText":"works","value":0.11731843575418995,"rep":6.7,"yValue":2.7},
 {"freqText":"fine","value":0.10614525139664804,"rep":5.5,"yValue":1.80},
 {"freqText":"right","value":0.0782122905027933,"rep":6,"yValue":1.6},
 {"freqText":"well","value":0.07541899441340782,"rep":5.8,"yValue":2.0},
-{"freqText":"good","value":0.0670391061452514,"rep":5.25,"yValue":1.65},
+{"freqText":"good","value":0.0670391061452514,"rep":4.3,"yValue":1.45},
 {"freqText":"better","value":0.06424581005586592,"rep":5.7,"yValue":2.2},
 {"freqText":"support","value":0.061452513966480445,"rep":6.5,"yValue":1.4},
-{"freqText":"correctly","value":0.04748603351955307+0.02,"rep":5,"yValue":1.50},
+{"freqText":"correctly","value":0.04748603351955307+0.02,"rep":5,"yValue":1.60},
 {"freqText":"correct","value":0.07053941908713693,"rep":6.4,"yValue":1.8},
 {"freqText":"best","value":0.04979253112033195+0.02,"rep":6.4,"yValue":2.1},
 
-{"freqText":"pretty","value":0.05063291139240506,"rep":7.4,"yValue":1.30},
+{"freqText":"pretty","value":0.05063291139240506,"rep":7.6,"yValue":1.10},
 {"freqText":"available","value":0.06962025316455696,"rep":8.5,"yValue":1.30},
 {"freqText":"like","value":0.47706422018348627,"rep":8,"yValue":1.50},
 {"freqText":"works","value":0.1834862385321101,"rep":8,"yValue":2.3},
 {"freqText":"work","value":0.1743119266055046,"rep":8,"yValue":0.8},
 {"freqText":"fine","value":0.13761467889908258,"rep":7.8,"yValue":2.8},
 {"freqText":"right","value":0.11009174311926606,"rep":9,"yValue":1},
-{"freqText":"well","value":0.11009174311926606,"rep":7.6,"yValue":1},
+{"freqText":"well","value":0.11009174311926606,"rep":7.5,"yValue":1.3},
 {"freqText":"good","value":0.09174311926605505,"rep":7.4,"yValue":2.55},
-{"freqText":"better","value":0.08256880733944955,"rep":8.2,"yValue":2.6},
-{"freqText":"safe","value":0.08256880733944955,"rep":8.3,"yValue":1.1},
-{"freqText":"support","value":0.05504587155963303,"rep":7.8,"yValue":3.1},
-{"freqText":"correct","value":0.0759493670886076,"rep":8.4,"yValue":2},
+{"freqText":"better","value":0.08256880733944955,"rep":8.3,"yValue":2.6},
+{"freqText":"safe","value":0.08256880733944955,"rep":8.2,"yValue":1.1},
+{"freqText":"support","value":0.05504587155963303,"rep":7.1,"yValue":3},
+{"freqText":"correct","value":0.0759493670886076,"rep":8.4,"yValue":2.1},
 
 {"freqText":"support","value":0.056338028169014086,"rep":9.8,"yValue":3},//
-{"freqText":"right","value":0.09859154929577464,"rep":11,"yValue":1.20},//
-{"freqText":"fluent","value":0.08450704225352113,"rep":11.8,"yValue":1.80},
-{"freqText":"fine","value":0.09859154929577464,"rep":11.5,"yValue":3.1},//
+{"freqText":"right","value":0.09859154929577464,"rep":1.9,"yValue":1.20},//
+{"freqText":"fluent","value":0.08450704225352113,"rep":12,"yValue":1.80},
+{"freqText":"fine","value":0.09859154929577464,"rep":11,"yValue":1.3},//
 {"freqText":"like","value":0.7534246575342466-0.1,"rep":10.7,"yValue":2},//
 {"freqText":"best","value":0.09859154929577464,"rep":11.7,"yValue":1.3},//
 {"freqText":"work","value":0.3013698630136986,"rep":10.5,"yValue":1.5},//
-{"freqText":"better","value":0.136986301369863,"rep":10,"yValue":0.8},//
+{"freqText":"better","value":0.136986301369863,"rep":10.1,"yValue":0.8},//
 {"freqText":"works","value":0.1232876712328767,"rep":11.4,"yValue":1.},//
 {"freqText":"good","value":0.1232876712328767,"rep":10,"yValue":1.1},//
 {"freqText":"correct","value":0.0821917808219178,"rep":10,"yValue":1.85},//
-{"freqText":"clear","value":0.0821917808219178,"rep":11.9,"yValue":1.55},
+{"freqText":"clear","value":0.0821917808219178,"rep":12,"yValue":1.55},
 {"freqText":"useful","value":0.0684931506849315,"rep":11.1,"yValue":0.83},//
-{"freqText":"well","value":0.0684931506849315,"rep":9.6,"yValue":3.2},//
+{"freqText":"well","value":0.0684931506849315,"rep":9.5,"yValue":3.2},//
 {"freqText":"important","value":0.0684931506849315,"rep":9.8,"yValue":1.35},//
-{"freqText":"correctly","value":0.07547169811320754,"rep":11.5,"yValue":2.7},//
-{"freqText":"enough","value":0.07547169811320754,"rep":11.6,"yValue":2.9},
-{"freqText":"easier","value":0.05660377358490566,"rep":11.8,"yValue":0.8},//
+{"freqText":"correctly","value":0.07547169811320754,"rep":11.5,"yValue":2.8},//
+{"freqText":"enough","value":0.07547169811320754,"rep":11.5,"yValue":3},
+{"freqText":"easier","value":0.05660377358490566,"rep":11.9,"yValue":0.8},//
 
 {"freqText":"important","value":0.10344827586206896,"rep":15.3,"yValue":1},//
-{"freqText":"distinction","value":0.10344827586206896,"rep":13.5,"yValue":2.10},//
+{"freqText":"distinction","value":0.09344827586206896,"rep":13.3,"yValue":2.10},//
 {"freqText":"easy","value":0.06896551724137931,"rep":14.3,"yValue":2.30},//
 {"freqText":"well","value":0.13793103448275862,"rep":14.9,"yValue":2.45},//
 {"freqText":"correctly","value":0.08888888888888889,"rep":15.5,"yValue":0.8},//
 {"freqText":"correct","value":0.08888888888888889,"rep":15.5,"yValue":1.40},//
 {"freqText":"right","value":0.10344827586206896,"rep":14,"yValue":2.5},//
-{"freqText":"good","value":0.17777777777777778,"rep":15,"yValue":2.0},//
+{"freqText":"good","value":0.17777777777777778,"rep":14.8,"yValue":2.0},//
 {"freqText":"better","value":0.13333333333333333,"rep":14.5,"yValue":2.8},//
 {"freqText":"like","value":0.36363636363636365,"rep":13.6,"yValue":1.50},//
 {"freqText":"work","value":0.30303030303030304,"rep":13.4,"yValue":0.8},//
-{"freqText":"works","value":0.15151515151515152,"rep":15.5,"yValue":1.55},//
-{"freqText":"fine","value":0.15151515151515152,"rep":16.1,"yValue":2},//
+{"freqText":"works","value":0.15151515151515152,"rep":15.3,"yValue":1.55},//
+{"freqText":"fine","value":0.15151515151515152,"rep":16,"yValue":2.5},//
 {"freqText":"pretty","value":0.12121212121212122,"rep":16,"yValue":1.20},//
-{"freqText":"useful","value":0.09090909090909091,"rep":15.8,"yValue":2.5},//
+{"freqText":"useful","value":0.09090909090909091,"rep":16,"yValue":2},//
 {"freqText":"available","value":0.09090909090909091,"rep":15.6,"yValue":1.8},//
 {"freqText":"simpler","value":0.06060606060606061,"rep":15.6,"yValue":2.8},//
-{"freqText":"clean","value":0.06060606060606061,"rep":12.5,"yValue":1.30},//
+{"freqText":"clean","value":0.06060606060606061,"rep":12.45,"yValue":1.30},//
 {"freqText":"fast","value":0.06060606060606061,"rep":12.4,"yValue":1.15},//
 {"freqText":"appropriate","value":0.06666666666666667,"rep":15.5,"yValue":2.3},//
-{"freqText":"transparent","value":0.13793103448275862,"rep":14,"yValue":1.24},//
+{"freqText":"transparent","value":0.11793103448275862,"rep":13.8,"yValue":1.24},//
 
 {"freqText":"safe","value":0.3125,"rep":17.5,"yValue":1.80},//
-{"freqText":"guarantee","value":0.125,"rep":21.5,"yValue":1.1},//
+{"freqText":"guarantee","value":0.125,"rep":21.8,"yValue":1.1},//
 {"freqText":"enough","value":0.125,"rep":19.2,"yValue":2.1},//
 {"freqText":"properly","value":0.0625,"rep":18.2,"yValue":0.8},//
-{"freqText":"pretty","value":0.0625,"rep":16.5,"yValue":0.95},//
+{"freqText":"pretty","value":0.0625,"rep":16.5,"yValue":1},//
 {"freqText":"convenient","value":0.0625,"rep":17,"yValue":0.8},//
-{"freqText":"available","value":0.0625,"rep":19.1,"yValue":0.82},
-{"freqText":"good","value":0.0625,"rep":18.5,"yValue":1.34},//
-{"freqText":"correctly","value":0.0625,"rep":16.9,"yValue":1.70},//
+{"freqText":"available","value":0.0625,"rep":19.2,"yValue":0.77},
+{"freqText":"good","value":0.0625,"rep":18.5,"yValue":1.4},//
+{"freqText":"correctly","value":0.0625,"rep":16.9,"yValue":1.65},//
 {"freqText":"like","value":0.4024390243902439,"rep":18,"yValue":0.9},//
-{"freqText":"better","value":0.15853658536585366,"rep":18.8,"yValue":1.5},//
+{"freqText":"better","value":0.14853658536585366,"rep":18.8,"yValue":1.5},//
 {"freqText":"fine","value":0.12195121951219512,"rep":19.7,"yValue":1.8},//
 {"freqText":"works","value":0.10975609756097561,"rep":17,"yValue":2.2},//
-{"freqText":"correct","value":0.0975609756097561,"rep":17.5,"yValue":2.4},//
-{"freqText":"work","value":0.0975609756097561,"rep":18.8,"yValue":1.80},//
+{"freqText":"correct","value":0.0975609756097561,"rep":17.3,"yValue":2.4},//
+{"freqText":"work","value":0.0975609756097561,"rep":18.9,"yValue":1.80},//
 {"freqText":"worked","value":0.08536585365853659,"rep":20.2,"yValue":0.8},
-{"freqText":"stable","value":0.08536585365853659,"rep":16.8,"yValue":1.50},
-{"freqText":"well","value":0.07317073170731707,"rep":16.8,"yValue":1.10},
-{"freqText":"faster","value":0.07317073170731707,"rep":17.8,"yValue":1.65},//
-{"freqText":"clarity","value":0.041666666666666664+0.02,"rep":19.6,"yValue":1.20},//
-{"freqText":"exceeds","value":0.08333333333333333,"rep":20.8,"yValue":1.3},//
+{"freqText":"stable","value":0.08536585365853659,"rep":16.6,"yValue":1.50},
+{"freqText":"well","value":0.06317073170731707,"rep":16.8,"yValue":1.20},
+{"freqText":"faster","value":0.07317073170731707,"rep":17.7,"yValue":1.55},//
+{"freqText":"clarity","value":0.041666666666666664+0.02,"rep":19.5,"yValue":1.15},//
+{"freqText":"exceeds","value":0.08333333333333333,"rep":20.3,"yValue":1.5},//
 {"freqText":"respect","value":0.08333333333333333,"rep":20,"yValue":1},//
-{"freqText":"positives","value":0.125,"rep":20.3,"yValue":1.43},
-{"freqText":"useful","value":0.125,"rep":20.7,"yValue":1.70},
+{"freqText":"positives","value":0.125,"rep":20.3,"yValue":1.26},
+{"freqText":"useful","value":0.125,"rep":20.7,"yValue":1.75},
 {"freqText":"gain","value":0.08333333333333333,"rep":20.6,"yValue":2.0},//
 
-{"freqText":"like","value":0.5714285714285714,"rep":22.8,"yValue":1.50},
+{"freqText":"like","value":0.5714285714285714,"rep":22.8,"yValue":1.40},
 {"freqText":"works","value":0.2,"rep":22,"yValue":0.8},
-{"freqText":"top","value":0.14285714285714285,"rep":24.3,"yValue":1.2},
+{"freqText":"top","value":0.14285714285714285,"rep":24.3,"yValue":1.1},
 {"freqText":"work","value":0.08571428571428572,"rep":23.5,"yValue":2.3},
-{"freqText":"well","value":0.05714285714285714,"rep":22.7,"yValue":1.1},
+{"freqText":"well","value":0.05714285714285714,"rep":22.8,"yValue":2.1},
 {"freqText":"successfully","value":0.05714285714285714,"rep":23,"yValue":1.3},
 {"freqText":"compatible","value":0.05714285714285714,"rep":23.6,"yValue":0.8},
-{"freqText":"better","value":0.05714285714285714,"rep":24,"yValue":1.0},
+{"freqText":"better","value":0.05714285714285714,"rep":23.7,"yValue":1.0},
 {"freqText":"super","value":0.05714285714285714,"rep":24,"yValue":2.1},
-{"freqText":"proper","value":0.05714285714285714,"rep":23.5,"yValue":1.11},
+{"freqText":"proper","value":0.05714285714285714,"rep":23.3,"yValue":1.11},
 
 {"freqText":"like","value":0.2777777777777778,"rep":25.4,"yValue":0.8},
 {"freqText":"best","value":0.1111111111111111,"rep":25,"yValue":2.3},
 {"freqText":"safe","value":0.1111111111111111,"rep":25.5,"yValue":2.1},
-{"freqText":"right","value":0.1111111111111111,"rep":26,"yValue":1.20},
-{"freqText":"super","value":0.08333333333333333,"rep":25.8,"yValue":1.70},
+{"freqText":"right","value":0.1111111111111111,"rep":26.1,"yValue":1.25},
+{"freqText":"super","value":0.08333333333333333,"rep":25.8,"yValue":1.80},
 {"freqText":"fine","value":0.08333333333333333,"rep":25.7,"yValue":2.5},
-{"freqText":"benefits","value":0.08333333333333333,"rep":26.2,"yValue":1.50},
-{"freqText":"work","value":0.08333333333333333,"rep":25,"yValue":1.80},
-{"freqText":"leads","value":0.05555555555555555,"rep":25.8,"yValue":1.9},
-{"freqText":"support","value":0.05555555555555555,"rep":25,"yValue":1.45},
+{"freqText":"benefits","value":0.08333333333333333,"rep":25.8,"yValue":1.50},
+{"freqText":"work","value":0.08333333333333333,"rep":24.6,"yValue":1.80},
+{"freqText":"leads","value":0.05555555555555555,"rep":25,"yValue":1.65},
+{"freqText":"support","value":0.05555555555555555,"rep":24.8,"yValue":1.45},
 
-{"freqText":"like","value":0.36,"rep":27.2,"yValue":2.3},
-{"freqText":"faster","value":0.16,"rep":28,"yValue":2.0},
+{"freqText":"like","value":0.36,"rep":27.2,"yValue":2.2},
+{"freqText":"faster","value":0.16,"rep":28,"yValue":1.9},
 {"freqText":"work","value":0.13333333333333333,"rep":27,"yValue":1.70},
 {"freqText":"right","value":0.10666666666666667,"rep":27.8,"yValue":0.8},
-{"freqText":"fine","value":0.08,"rep":27.8,"yValue":1.10},
-{"freqText":"better","value":0.06666666666666667,"rep":26.7,"yValue":1.05},
+{"freqText":"fine","value":0.08,"rep":28,"yValue":1.10},
+{"freqText":"better","value":0.06666666666666667,"rep":26.7,"yValue":0.9},
 {"freqText":"enough","value":0.06666666666666667,"rep":26.5,"yValue":2.0},
-{"freqText":"support","value":0.06666666666666667,"rep":27.6,"yValue":1.35},
+{"freqText":"support","value":0.06666666666666667,"rep":27.2,"yValue":1.25},
 {"freqText":"well","value":0.06666666666666667,"rep":27.8,"yValue":1.50},
-{"freqText":"good","value":0.06666666666666667,"rep":26.7,"yValue":0.8},
+{"freqText":"good","value":0.06666666666666667,"rep":26.7,"yValue":1.5},
 
 {"freqText":"failed","value":0.01877953260129556+0.04,"rep":-0.3,"yValue":-0.4},//
-{"freqText":"unable","value":0.018501192870842495+0.04,"rep":1.7,"yValue":0.6},////
+{"freqText":"unable","value":0.018501192870842495+0.04,"rep":1.7,"yValue":0.62},////
 {"freqText":"fails","value":0.0182906862515788+0.04,"rep":1,"yValue":0.15},
 {"freqText":"problem","value":0.25988417816543935,"rep":1,"yValue":0.3},//
-{"freqText":"error","value":0.2505183384571388,"rep":1,"yValue":-0.5},//
+{"freqText":"error","value":0.2405183384571388,"rep":1,"yValue":-0.5},//
 {"freqText":"object","value":0.18474297562021877,"rep":0.5,"yValue":-0.1},//
 {"freqText":"wrong","value":0.08786730535497247,"rep":2,"yValue":-0.65},//
 {"freqText":"issue","value":0.07271037391863873,"rep":1.8,"yValue":0},//
-{"freqText":"static","value":0.041324086651891044+0.03,"rep":2.2,"yValue":-0.4},//
-{"freqText":"errors","value":0.03810681346965039+0.03,"rep":-0.5,"yValue":-0.2},//
+{"freqText":"static","value":0.041324086651891044+0.02,"rep":2.2,"yValue":-0.4},//
+{"freqText":"errors","value":0.03810681346965039+0.03,"rep":-0.5,"yValue":-0.3},//
 {"freqText":"problems","value":0.02995638807464074+0.03,"rep":1.7,"yValue":-0.2},//
 {"freqText":"issues","value":0.02266390219489526+0.03,"rep":2,"yValue":0.2},//
-{"freqText":"failed","value":0.019732608851076+0.04,"rep":2.4,"yValue":-0.15},
+{"freqText":"failed","value":0.019732608851076+0.04,"rep":2.45,"yValue":-0.15},
 
-{"freqText":"bad","value":0.027268853855986364+0.03,"rep":4.7,"yValue":0.3},
+{"freqText":"bad","value":0.027268853855986364+0.03,"rep":4.2,"yValue":0.3},
 {"freqText":"fails","value":0.020998864926220204+0.03,"rep":3,"yValue":0.3},
 {"freqText":"problem","value":0.28180212014134276,"rep":4.2,"yValue":-0.7},
 {"freqText":"error","value":0.25353356890459366,"rep":4,"yValue":0.4},
 {"freqText":"object","value":0.20141342756183744,"rep":3.7,"yValue":0},
 {"freqText":"wrong","value":0.10335689045936396,"rep":4.3,"yValue":-0.9},
 {"freqText":"issue","value":0.09275618374558305,"rep":4,"yValue":-0.2},
-{"freqText":"static","value":0.0627208480565371,"rep":3.3,"yValue":-0.4},
-{"freqText":"errors","value":0.04240282685512368+0.02,"rep":5,"yValue":-0.4},
-{"freqText":"bug","value":0.037102473498233215+0.02,"rep":3.2,"yValue":-0.2},
-{"freqText":"problems","value":0.028268551236749116+0.03,"rep":4.8,"yValue":-0.2},
+{"freqText":"static","value":0.0627208480565371,"rep":3.1,"yValue":-0.3},
+{"freqText":"errors","value":0.04240282685512368+0.02,"rep":5,"yValue":-0.35},
+{"freqText":"bug","value":0.037102473498233215+0.02,"rep":3.2,"yValue":-0.15},
+{"freqText":"problems","value":0.028268551236749116+0.03,"rep":4.9,"yValue":-0.2},
 {"freqText":"false","value":0.024734982332155476+0.03,"rep":3.5,"yValue":-0.85},
 
-{"freqText":"bad","value":0.030405405405405407+0.02,"rep":6.5,"yValue":-0.6},
-{"freqText":"error","value":0.2849162011173184,"rep":6.3,"yValue":-1},
+{"freqText":"bad","value":0.030405405405405407+0.02,"rep":6.3,"yValue":-0.5},
+{"freqText":"error","value":0.2849162011173184,"rep":6.1,"yValue":-1.1},
 {"freqText":"problem","value":0.24860335195530725,"rep":6.5,"yValue":0},
-{"freqText":"object","value":0.17318435754189945,"rep":6.2,"yValue":-0.4},
-{"freqText":"issue","value":0.1005586592178771,"rep":5.5,"yValue":0.5},
+{"freqText":"object","value":0.17318435754189945,"rep":6.2,"yValue":-0.35},
+{"freqText":"issue","value":0.1005586592178771,"rep":5.5,"yValue":0.4},
 {"freqText":"wrong","value":0.07262569832402235,"rep":7,"yValue":-1.2},
-{"freqText":"static","value":0.061452513966480445,"rep":6.9,"yValue":-0.1},
-{"freqText":"bug","value":0.05865921787709497,"rep":6,"yValue":-1.1},
-{"freqText":"warning","value":0.05307262569832402,"rep":7,"yValue":-0.6},
+{"freqText":"static","value":0.061452513966480445,"rep":7,"yValue":-0.5},
+{"freqText":"bug","value":0.05865921787709497,"rep":6,"yValue":0.6},
+{"freqText":"warning","value":0.05307262569832402,"rep":6.7,"yValue":-0.65},
 {"freqText":"problems","value":0.03910614525139665+0.02,"rep":7.2,"yValue":0.55},
-{"freqText":"errors","value":0.036312849162011177+0.02,"rep":6.5,"yValue":0.45},
+{"freqText":"errors","value":0.036312849162011177+0.02,"rep":6.5,"yValue":0.4},
 
 {"freqText":"warning","value":0.06962025316455696,"rep":9,"yValue":-0.2},
-{"freqText":"slower","value":0.05063291139240506,"rep":8.5,"yValue":0},
-{"freqText":"errors","value":0.04430379746835443+0.02,"rep":9.2,"yValue":0},
-{"freqText":"garbage","value":0.10126582278481013,"rep":9,"yValue":0.2},
-{"freqText":"issues","value":0.05394190871369295,"rep":9.5,"yValue":-0.9},
-{"freqText":"error","value":0.28440366972477066,"rep":8.8,"yValue":0.4},
+{"freqText":"slower","value":0.05063291139240506,"rep":8.2,"yValue":-0.15},
+{"freqText":"errors","value":0.04430379746835443+0.02,"rep":8.8,"yValue":0},
+{"freqText":"garbage","value":0.10126582278481013,"rep":8.8,"yValue":0.15},
+{"freqText":"issues","value":0.05394190871369295,"rep":9,"yValue":-0.9},
+{"freqText":"error","value":0.28440366972477066,"rep":8.8,"yValue":0.35},
 {"freqText":"problem","value":0.1834862385321101,"rep":8.7,"yValue":-1.4},
 {"freqText":"object","value":0.1743119266055046,"rep":8.6,"yValue":-0.5},
-{"freqText":"static","value":0.08256880733944955,"rep":8,"yValue":-0.7},
+{"freqText":"static","value":0.08256880733944955,"rep":7.8,"yValue":-0.7},
 {"freqText":"issue","value":0.07339449541284404,"rep":8.1,"yValue":-1.1},
-{"freqText":"wrong","value":0.07339449541284404,"rep":8.5,"yValue":-0.9},
-{"freqText":"fails","value":0.06422018348623854,"rep":9.2,"yValue":-0.75},
-{"freqText":"bug","value":0.06422018348623854,"rep":8,"yValue":-0.2},
-{"freqText":"strange","value":0.05504587155963303,"rep":9.3,"yValue":-1.1},
+{"freqText":"wrong","value":0.07339449541284404,"rep":8.1,"yValue":-0.9},
+{"freqText":"fails","value":0.06422018348623854,"rep":8.8,"yValue":-0.75},
+{"freqText":"bug","value":0.06422018348623854,"rep":7.6,"yValue":-0.3},
+{"freqText":"strange","value":0.05504587155963303,"rep":9,"yValue":-1.1},
 {"freqText":"naive","value":0.05504587155963303,"rep":9,"yValue":-0.6},
-{"freqText":"killed","value":0.1095890410958904,"rep":10.4,"yValue":-1},
+{"freqText":"killed","value":0.1095890410958904,"rep":10,"yValue":-1},
 {"freqText":"weird","value":0.07042253521126761,"rep":10.9,"yValue":-1.8},
-{"freqText":"unfortunately","value":0.08450704225352113,"rep":12,"yValue":0.5},
+{"freqText":"unfortunately","value":0.08450704225352113,"rep":12,"yValue":0.55},
 {"freqText":"trivial","value":0.0684931506849315,"rep":12.2,"yValue":-0.8},
 {"freqText":"kill","value":0.0821917808219178,"rep":11.3,"yValue":-1.3},
-{"freqText":"strange","value":0.10126582278481013,"rep":11.2,"yValue":-0.8},
+{"freqText":"strange","value":0.10126582278481013,"rep":11.2,"yValue":-1},
 
 {"freqText":"errors","value":0.0821917808219178,"rep":13,"yValue":-0.7},
 {"freqText":"issues","value":0.0821917808219178,"rep":12.8,"yValue":-1},
 {"freqText":"delay","value":0.08450704225352113,"rep":12.8,"yValue":-1.5},
 {"freqText":"deprecate","value":0.056338028169014086,"rep":13,"yValue":-0.3},
-{"freqText":"suspect","value":0.06329113924050633,"rep":12.7,"yValue":-0.5},
+{"freqText":"suspect","value":0.06329113924050633,"rep":12.8,"yValue":-0.5},
 {"freqText":"failed","value":0.06329113924050633,"rep":12.8,"yValue":-1.8},
 {"freqText":"slower","value":0.06329113924050633,"rep":13,"yValue":-1.2},
 {"freqText":"object","value":0.3584905660377358,"rep":11.2,"yValue":-0.1},
-{"freqText":"error","value":0.2641509433962264,"rep":10.8,"yValue":-1.6},
+{"freqText":"error","value":0.2441509433962264,"rep":10.8,"yValue":-1.6},
 {"freqText":"problem","value":0.22641509433962265,"rep":11,"yValue":-0.6},
 {"freqText":"bug","value":0.11320754716981132,"rep":10.5,"yValue":0.5},
 {"freqText":"wrong","value":0.09433962264150944,"rep":10.5,"yValue":-1.2},
 {"freqText":"issue","value":0.09433962264150944,"rep":10.2,"yValue":-0.8},
-{"freqText":"static","value":0.07547169811320754,"rep":11.6,"yValue":0.3},
+{"freqText":"static","value":0.07547169811320754,"rep":11.7,"yValue":0.35},
 {"freqText":"warning","value":0.07547169811320754,"rep":12,"yValue":-0.3},
-{"freqText":"monster","value":0.07547169811320754,"rep":10.3,"yValue":-0.3},
-{"freqText":"stutters","value":0.07547169811320754,"rep":11.5,"yValue":-1},
+{"freqText":"monster","value":0.07547169811320754,"rep":10.2,"yValue":-0.3},
+{"freqText":"stutters","value":0.07547169811320754,"rep":11.4,"yValue":-0.8},
 
-{"freqText":"bug","value":0.1111111111111111,"rep":16.4,"yValue":-0.7},
+{"freqText":"bug","value":0.1111111111111111,"rep":16.4,"yValue":-0.8},
 {"freqText":"object","value":0.28888888888888886,"rep":15,"yValue":-0.3},
 {"freqText":"errors","value":0.24444444444444444,"rep":15,"yValue":-1.3},
 {"freqText":"problem","value":0.30303030303030304,"rep":15,"yValue":0.3},
 {"freqText":"error","value":0.18181818181818182,"rep":15.5,"yValue":-0.6},
-{"freqText":"elimination","value":0.12121212121212122,"rep":14.6,"yValue":-0.8},
-{"freqText":"warning","value":0.09090909090909091,"rep":14.2,"yValue":0.1},
-{"freqText":"negative","value":0.09090909090909091,"rep":15.6,"yValue":0.1},
+{"freqText":"elimination","value":0.12121212121212122,"rep":14.7,"yValue":-0.8},
+{"freqText":"warning","value":0.08090909090909091,"rep":13.7,"yValue":0.1},
+{"freqText":"negative","value":0.08090909090909091,"rep":15.6,"yValue":0.1},
 {"freqText":"detrimental","value":0.06060606060606061,"rep":14,"yValue":-0.6},
-{"freqText":"complicated","value":0.06060606060606061,"rep":15.4,"yValue":-1},
+{"freqText":"complicated","value":0.06060606060606061,"rep":14.5,"yValue":-0.95},
 {"freqText":"annoying","value":0.06060606060606061,"rep":14.2,"yValue":-0.4},
-{"freqText":"garbage","value":0.06060606060606061,"rep":16,"yValue":-0.85},
-{"freqText":"leak","value":0.06060606060606061,"rep":16.3,"yValue":-1.1},
+{"freqText":"garbage","value":0.06060606060606061,"rep":15.9,"yValue":-0.95},
+{"freqText":"leak","value":0.06060606060606061,"rep":16.4,"yValue":-1.1},
 
-{"freqText":"critical","value":0.0625,"rep":17,"yValue":-0.1},
+{"freqText":"critical","value":0.0625,"rep":16.7,"yValue":-0.1},
 {"freqText":"unknown","value":0.0625,"rep":18.5,"yValue":-0.25},
-{"freqText":"unsafe","value":0.0625,"rep":19.05,"yValue":-0.5},
+{"freqText":"unsafe","value":0.0525,"rep":19.2,"yValue":-0.5},
 {"freqText":"death","value":0.25,"rep":17.8,"yValue":-0.65},
 {"freqText":"leak","value":0.20833333333333334,"rep":19.6,"yValue":-0.1},
 {"freqText":"penalty","value":0.2916666666666667,"rep":18.5,"yValue":-1},
-{"freqText":"error","value":0.2804878048780488,"rep":18,"yValue":0.4},
-{"freqText":"object","value":0.2073170731707317,"rep":20.2,"yValue":-0.45},
-{"freqText":"issue","value":0.17073170731707318,"rep":18,"yValue":-0.1},
-{"freqText":"problem","value":0.14634146341463414,"rep":17.8,"yValue":0.1},
+{"freqText":"error","value":0.2504878048780488,"rep":18,"yValue":0.35},
+{"freqText":"object","value":0.2073170731707317,"rep":20.3,"yValue":-0.4},
+{"freqText":"issue","value":0.16073170731707318,"rep":18,"yValue":-0.1},
+{"freqText":"problem","value":0.13634146341463414,"rep":17.8,"yValue":0.1},
 {"freqText":"wrong","value":0.14634146341463414,"rep":17.2,"yValue":-0.3},
 {"freqText":"bug","value":0.125,"rep":19.4,"yValue":0.3},
-{"freqText":"confused","value":0.06097560975609756,"rep":19.9,"yValue":-0.7},
+{"freqText":"confused","value":0.06097560975609756,"rep":20,"yValue":-0.6},
 
 {"freqText":"error","value":0.34285714285714286,"rep":21.8,"yValue":-1.2},
 {"freqText":"problem","value":0.2571428571428571,"rep":21.6,"yValue":0.3},
-{"freqText":"object","value":0.17142857142857143,"rep":22.7,"yValue":-0.8},
-{"freqText":"split","value":0.14285714285714285,"rep":21.1,"yValue":-0.8},
+{"freqText":"object","value":0.17142857142857143,"rep":22.8,"yValue":-0.7},
+{"freqText":"split","value":0.14285714285714285,"rep":21.1,"yValue":-0.7},
 {"freqText":"static","value":0.14285714285714285,"rep":22.1,"yValue":-0.2},
-{"freqText":"issue","value":0.11428571428571428,"rep":22.1,"yValue":-0.47},
-{"freqText":"limit","value":0.08571428571428572,"rep":22,"yValue":0.1},
+{"freqText":"issue","value":0.11428571428571428,"rep":22,"yValue":-0.43},
+{"freqText":"limit","value":0.08571428571428572,"rep":21.7,"yValue":0.1},
 {"freqText":"break","value":0.05714285714285714,"rep":21,"yValue":0.1},
 {"freqText":"illegal","value":0.05714285714285714,"rep":20.8,"yValue":-0.1},
-{"freqText":"strange","value":0.05714285714285714,"rep":22.7,"yValue":0.1},
+{"freqText":"strange","value":0.05714285714285714,"rep":22.5,"yValue":0.1},
 
-{"freqText":"error","value":0.4444444444444444,"rep":24.8,"yValue":-0.4},
+{"freqText":"error","value":0.4444444444444444,"rep":24.6,"yValue":-0.4},
 {"freqText":"object","value":0.2222222222222222,"rep":24.2,"yValue":-1.2},
-{"freqText":"problem","value":0.19444444444444445,"rep":25,"yValue":0.4},
+{"freqText":"problem","value":0.19444444444444445,"rep":25,"yValue":0.35},
 {"freqText":"fails","value":0.16666666666666666,"rep":24.5,"yValue":-0.7},
 {"freqText":"issue","value":0.1111111111111111,"rep":25.5,"yValue":0.1},
-{"freqText":"fail","value":0.08333333333333333,"rep":23.6,"yValue":0.15},
+{"freqText":"fail","value":0.08333333333333333,"rep":23.5,"yValue":0.15},
 {"freqText":"warning","value":0.05555555555555555,"rep":25.1,"yValue":-0.85},
-{"freqText":"missed","value":0.05555555555555555,"rep":24.5,"yValue":0.1},
-{"freqText":"errors","value":0.05555555555555555,"rep":25.4,"yValue":-0.6},
+{"freqText":"missed","value":0.05555555555555555,"rep":24.5,"yValue":0.16},
+{"freqText":"errors","value":0.05555555555555555,"rep":25.4,"yValue":-0.65},
 {"freqText":"issues","value":0.05555555555555555,"rep":24.7,"yValue":-1.35},
 
 {"freqText":"error","value":0.26666666666666666,"rep":27.5,"yValue":-1.4},
-{"freqText":"problem","value":0.22666666666666666,"rep":27.3,"yValue":-0.7},
+{"freqText":"problem","value":0.22666666666666666,"rep":27.3,"yValue":-0.75},
 {"freqText":"false","value":0.17333333333333334,"rep":27,"yValue":0.2},
 {"freqText":"issue","value":0.16,"rep":27.8,"yValue":-0.1},
 {"freqText":"object","value":0.10666666666666667,"rep":27,"yValue":-1},
@@ -1080,7 +1108,7 @@ votesAnswersText=
 {"freqText":"work","value":0.10724106324472961,"rep":6.6,"yValue":1.6},
 {"freqText":"well","value":0.06232813932172319,"rep":6.7,"yValue":1.2},
 {"freqText":"works","value":0.06049495875343722,"rep":6.8,"yValue":0.8},
-{"freqText":"good","value":0.05774518790100825,"rep":6,"yValue":1.5},
+{"freqText":"good","value":0.05774518790100825,"rep":6,"yValue":1.4},
 {"freqText":"better","value":0.05774518790100825,"rep":6.7,"yValue":1.4},
 {"freqText":"correct","value":0.05041246562786435,"rep":6.3,"yValue":1.0},
 {"freqText":"support","value":0.045829514207149404+0.02,"rep":5.7,"yValue":1.20},
@@ -1099,25 +1127,25 @@ votesAnswersText=
 {"freqText":"works","value":0.06796116504854369,"rep":7.4,"yValue":0.35},
 {"freqText":"clear","value":0.061488673139158574,"rep":8.5,"yValue":0.6},
 {"freqText":"better","value":0.05825242718446602,"rep":8.7,"yValue":0.95},
-{"freqText":"important","value":0.04854368932038835+0.02,"rep":7.7,"yValue":1},
-{"freqText":"enough","value":0.042071197411003236+0.02,"rep":8.6,"yValue":1.7},
+{"freqText":"important","value":0.04854368932038835+0.02,"rep":7.4,"yValue":1},
+{"freqText":"enough","value":0.042071197411003236+0.02,"rep":8.8,"yValue":1.7},
 {"freqText":"guarantee","value":0.047619047619047616+0.02,"rep":8.1,"yValue":1.20},
 {"freqText":"available","value":0.042328042328042326+0.02,"rep":8.4,"yValue":0.8},
 
 {"freqText":"clear","value":0.052980132450331126,"rep":12.5,"yValue":1.2},
 {"freqText":"enough","value":0.043010752688172046+0.02,"rep":9.8,"yValue":0.40},
-{"freqText":"guarantee","value":0.07526881720430108,"rep":11.7,"yValue":0.45},
-{"freqText":"works","value":0.08602150537634409,"rep":11.4,"yValue":2.2},
+{"freqText":"guarantee","value":0.07526881720430108,"rep":11.8,"yValue":0.60},
+{"freqText":"works","value":0.08602150537634409,"rep":11.6,"yValue":2.2},
 {"freqText":"fine","value":0.08602150537634409,"rep":10,"yValue":1.3},
 {"freqText":"like","value":0.4074074074074074,"rep":10.4,"yValue":1.50},
-{"freqText":"right","value":0.20987654320987653,"rep":10.5,"yValue":0.6},
+{"freqText":"right","value":0.20987654320987653,"rep":10.4,"yValue":0.6},
 {"freqText":"work","value":0.18518518518518517,"rep":11.5,"yValue":1.20},
 {"freqText":"good","value":0.13580246913580246,"rep":10,"yValue":1},
 {"freqText":"better","value":0.1111111111111111,"rep":11.2,"yValue":1},
-{"freqText":"correct","value":0.08641975308641975,"rep":11.8,"yValue":0.8},
-{"freqText":"advantages","value":0.08641975308641975,"rep":11,"yValue":0.30},
-{"freqText":"support","value":0.08641975308641975,"rep":12.2,"yValue":0.65},
-{"freqText":"available","value":0.07407407407407407,"rep":11.3,"yValue":2.0},
+{"freqText":"correct","value":0.08641975308641975,"rep":12,"yValue":1.5},
+{"freqText":"advantages","value":0.08641975308641975,"rep":11.2,"yValue":0.35},
+{"freqText":"support","value":0.08641975308641975,"rep":12.2,"yValue":0.80},
+{"freqText":"available","value":0.07407407407407407,"rep":11.6,"yValue":2.0},
 {"freqText":"well","value":0.07407407407407407,"rep":11.8,"yValue":1.7},
 
 {"freqText":"like","value":0.5909090909090909,"rep":14.7,"yValue":1.50},
@@ -1135,7 +1163,7 @@ votesAnswersText=
 {"freqText":"enough","value":0.06153846153846154,"rep":16,"yValue":1},
 {"freqText":"safe","value":0.09259259259259259,"rep":15.9,"yValue":0.6},
 {"freqText":"useful","value":0.09259259259259259,"rep":15.8,"yValue":1.20},
-{"freqText":"available","value":0.07407407407407407,"rep":15.7,"yValue":2.1},
+{"freqText":"available","value":0.06407407407407407,"rep":15.7,"yValue":2.15},
 {"freqText":"fast","value":0.07692307692307693,"rep":14.9,"yValue":1.15},
 {"freqText":"fine","value":0.07692307692307693,"rep":16.4,"yValue":0.8},
 
@@ -1150,14 +1178,14 @@ votesAnswersText=
 {"freqText":"correct","value":0.102803738317757,"rep":17,"yValue":1.8},
 {"freqText":"better","value":0.08411214953271028,"rep":17,"yValue":1.2},
 {"freqText":"good","value":0.07476635514018691,"rep":18.5,"yValue":2.9},
-{"freqText":"works","value":0.07476635514018691,"rep":19.3,"yValue":2.9},
-{"freqText":"well","value":0.06542056074766354,"rep":16.8,"yValue":1.6},
-{"freqText":"clear","value":0.056074766355140186,"rep":19.3,"yValue":1.40},
+{"freqText":"works","value":0.07476635514018691,"rep":19.3,"yValue":3},
+{"freqText":"well","value":0.06542056074766354,"rep":16.8,"yValue":1.5},
+{"freqText":"clear","value":0.056074766355140186,"rep":19.5,"yValue":1.40},
 {"freqText":"fine","value":0.04672897196261682+0.02,"rep":19.7,"yValue":0.4},
 {"freqText":"safe","value":0.07142857142857142,"rep":18,"yValue":2.2},
 {"freqText":"simplest","value":0.07142857142857142,"rep":18,"yValue":1.30},
-{"freqText":"coherence","value":0.2962962962962963,"rep":18,"yValue":2.50},
-{"freqText":"flexible","value":0.1111111111111111,"rep":19,"yValue":2.3},
+{"freqText":"coherence","value":0.2962962962962963,"rep":18,"yValue":2.4},
+{"freqText":"flexible","value":0.1111111111111111,"rep":19,"yValue":2.2},
 {"freqText":"useful","value":0.1111111111111111,"rep":17.5,"yValue":2.95},
 {"freqText":"great","value":0.07407407407407407,"rep":19.3,"yValue":1.6},
 
@@ -1165,12 +1193,12 @@ votesAnswersText=
 {"freqText":"like","value":0.6111111111111112,"rep":21.5,"yValue":1.30},
 {"freqText":"work","value":0.24074074074074073,"rep":21.5,"yValue":0.30},
 {"freqText":"right","value":0.24074074074074073,"rep":22,"yValue":2.70},
-{"freqText":"better","value":0.2037037037037037,"rep":21.3,"yValue":2.3},
+{"freqText":"better","value":0.2037037037037037,"rep":21.5,"yValue":2.3},
 {"freqText":"support","value":0.14814814814814814,"rep":20.7,"yValue":0.7},
 {"freqText":"works","value":0.1111111111111111,"rep":21,"yValue":1},
 {"freqText":"easy","value":0.1111111111111111,"rep":22.4,"yValue":1},
 {"freqText":"correct","value":0.09259259259259259,"rep":22.5,"yValue":0.7},
-{"freqText":"best","value":0.09259259259259259,"rep":20.6,"yValue":3.1},
+{"freqText":"best","value":0.09259259259259259,"rep":20.6,"yValue":3},
 {"freqText":"good","value":0.09259259259259259,"rep":22.5,"yValue":2},
 
 {"freqText":"like","value":0.6666666666666666,"rep":25,"yValue":2.2},
@@ -1199,44 +1227,44 @@ votesAnswersText=
 {"freqText":"problem","value":0.10110707749542468,"rep":1,"yValue":0},
 {"freqText":"error","value":0.050973568149770485,"rep":1.5,"yValue":0.15},
 {"freqText":"static","value":0.046863280429630075+0.02,"rep":2,"yValue":0},
-{"freqText":"issue","value":0.03384236896582761+0.02,"rep":0.9,"yValue":-0.40},
+{"freqText":"issue","value":0.03384236896582761+0.02,"rep":0.9,"yValue":-0.45},
 {"freqText":"wrong","value":0.027211904833338334+0.03,"rep":-0.15,"yValue":0.15},
-{"freqText":"problems","value":0.018751312591881432+0.04,"rep":1.8,"yValue":-0.40},
+{"freqText":"problems","value":0.018751312591881432+0.04,"rep":1.8,"yValue":-0.35},
 {"freqText":"issues","value":0.015001050073505145+0.04,"rep":2.2,"yValue":-0.5},
 {"freqText":"bad","value":0.01434100387027092+0.04,"rep":0,"yValue":0},
 {"freqText":"primitive","value":0.012690888362185354+0.04,"rep":1.4,"yValue":-0.2},
 {"freqText":"split","value":0.013142053303255732+0.04,"rep":0.8,"yValue":0.17},
 {"freqText":"false","value":0.012318298756764292+0.04,"rep":2.2,"yValue":-0.20},
 
-{"freqText":"problems","value":0.01751138952164009+0.04,"rep":4.6,"yValue":0.1},
+{"freqText":"problems","value":0.01751138952164009+0.04,"rep":4.6,"yValue":0.15},
 {"freqText":"issues","value":0.01623006833712984+0.04,"rep":2.8,"yValue":0.15},
 {"freqText":"object","value":0.21156408206767918,"rep":3.5,"yValue":-0.2},
-{"freqText":"problem","value":0.10205169197974953,"rep":4,"yValue":-0.4},
-{"freqText":"error","value":0.05755395683453238,"rep":3.7,"yValue":0.1},
+{"freqText":"problem","value":0.10205169197974953,"rep":3.9,"yValue":-0.4},
+{"freqText":"error","value":0.05755395683453238,"rep":3.7,"yValue":0.15},
 {"freqText":"static","value":0.05675459632294165,"rep":4.8,"yValue":-0.1},
 {"freqText":"issue","value":0.03543831601385558+0.02,"rep":4,"yValue":-0.55},
-{"freqText":"wrong","value":0.03250732747135625+0.02,"rep":2.9,"yValue":-0.4},
+{"freqText":"wrong","value":0.03250732747135625+0.02,"rep":2.8,"yValue":-0.4},
 {"freqText":"primitive","value":0.0253130828670397+0.03,"rep":4.5,"yValue":-0.65},
 {"freqText":"bug","value":0.018118838262723154+0.04,"rep":3.2,"yValue":-0.6},
 {"freqText":"bad","value":0.018118838262723154+0.04,"rep":4.75,"yValue":-0.3},
-{"freqText":"split","value":0.017585931254996003+0.04,"rep":4.9,"yValue":-0.5},
+{"freqText":"split","value":0.017585931254996003+0.04,"rep":4.8,"yValue":-0.5},
 
-{"freqText":"problems","value":0.02476780185758514+0.03,"rep":6.8,"yValue":0.15},
+{"freqText":"problems","value":0.02476780185758514+0.03,"rep":6.9,"yValue":0.15},
 {"freqText":"false","value":0.020123839009287926+0.03,"rep":6.3,"yValue":-0.8},
 {"freqText":"object","value":0.20439963336388633,"rep":6,"yValue":-0.7},
 {"freqText":"problem","value":0.10449129239230064,"rep":6.2,"yValue":-0.2},
 {"freqText":"static","value":0.0843263061411549,"rep":6,"yValue":0.1},
 {"freqText":"error","value":0.05682859761686526,"rep":7,"yValue":-1.0},
 {"freqText":"issue","value":0.04216315307057745+0.02,"rep":6.7,"yValue":0},
-{"freqText":"primitive","value":0.035747021081576534+0.02,"rep":5.6,"yValue":-0.35},
+{"freqText":"primitive","value":0.035747021081576534+0.02,"rep":5.5,"yValue":-0.35},
 {"freqText":"bug","value":0.02933088909257562+0.03,"rep":6.7,"yValue":-0.9},
 {"freqText":"wrong","value":0.02474793767186068+0.03,"rep":6.5,"yValue":-0.45},
-{"freqText":"split","value":0.022914757103574702+0.03,"rep":7,"yValue":-0.45},
-{"freqText":"bad","value":0.022914757103574702+0.03,"rep":7.1,"yValue":-0.1},
-{"freqText":"garbage","value":0.034074074074074076+0.02,"rep":5.6,"yValue":0},
+{"freqText":"split","value":0.022914757103574702+0.03,"rep":7.6,"yValue":-0.75},
+{"freqText":"bad","value":0.022914757103574702+0.03,"rep":7.2,"yValue":-0.1},
+{"freqText":"garbage","value":0.034074074074074076+0.02,"rep":5.4,"yValue":0},
 {"freqText":"issues","value":0.025185185185185185+0.03,"rep":6.7,"yValue":-0.3},
 
-{"freqText":"hard","value":0.036057692307692304+0.02,"rep":10.5,"yValue":-0.1},
+{"freqText":"hard","value":0.036057692307692304+0.02,"rep":10.5,"yValue":0},
 {"freqText":"bad","value":0.03125+0.02,"rep":9.2,"yValue":-0.1},
 {"freqText":"false","value":0.028846153846153848+0.03,"rep":9.8,"yValue":-0.1},
 {"freqText":"object","value":0.3656957928802589,"rep":9,"yValue":-0.6},
@@ -1247,10 +1275,10 @@ votesAnswersText=
 {"freqText":"bug","value":0.061488673139158574,"rep":9.2,"yValue":-0.7},
 {"freqText":"issue","value":0.05501618122977346,"rep":9.7,"yValue":-1.0},
 {"freqText":"wrong","value":0.042071197411003236+0.02,"rep":10,"yValue":-0.7},
-{"freqText":"trick","value":0.02912621359223301+0.03,"rep":7.3,"yValue":-0.75},
-{"freqText":"negative","value":0.025889967637540454+0.03,"rep":10.3,"yValue":-0.9},
+{"freqText":"trick","value":0.02912621359223301+0.03,"rep":7.1,"yValue":-0.8},
+{"freqText":"negative","value":0.025889967637540454+0.03,"rep":10.1,"yValue":-0.9},
 {"freqText":"warning","value":0.042328042328042326+0.02,"rep":9.5,"yValue":-1.2},
-{"freqText":"problems","value":0.037037037037037035+0.02,"rep":10,"yValue":0.1},
+{"freqText":"problems","value":0.037037037037037035+0.02,"rep":10,"yValue":0.15},
 {"freqText":"fail","value":0.026455026455026454+0.03,"rep":8.8,"yValue":-1.30},
 
 {"freqText":"problem","value":0.20987654320987653,"rep":12.6,"yValue":-0.1},
@@ -1261,35 +1289,35 @@ votesAnswersText=
 {"freqText":"issue","value":0.09876543209876543,"rep":13.7,"yValue":-1.8},
 {"freqText":"disadvantages","value":0.08641975308641975,"rep":12,"yValue":-0.3},
 {"freqText":"primitive","value":0.07407407407407407,"rep":13.6,"yValue":-1.2},
-{"freqText":"unfortunately","value":0.06172839506172839,"rep":11.5,"yValue":-0.9},
+{"freqText":"unfortunately","value":0.06172839506172839,"rep":11.3,"yValue":-1.1},
 {"freqText":"false","value":0.06172839506172839,"rep":13.8,"yValue":0.15},
 {"freqText":"limit","value":0.046357615894039736+0.02,"rep":14,"yValue":-1.4},
 {"freqText":"bug","value":0.046357615894039736+0.02,"rep":11.3,"yValue":-1.30},
-{"freqText":"issues","value":0.046357615894039736+0.02,"rep":11.4,"yValue":-1.1},
+{"freqText":"issues","value":0.046357615894039736+0.02,"rep":11.4,"yValue":-0.9},
 {"freqText":"fail","value":0.046357615894039736+0.02,"rep":11.1,"yValue":-0.05},
 {"freqText":"expensive","value":0.039735099337748346+0.02,"rep":13.7,"yValue":-0.3},
 {"freqText":"problems","value":0.13978494623655913,"rep":12.2,"yValue":-0.7},
-{"freqText":"leak","value":0.11827956989247312,"rep":13.2,"yValue":-1.4},
+{"freqText":"leak","value":0.10827956989247312,"rep":13.2,"yValue":-1.4},
 {"freqText":"leaking","value":0.07526881720430108,"rep":11.2,"yValue":-0.5},
-{"freqText":"wrong","value":0.07526881720430108,"rep":13.6,"yValue":-0.7},
+{"freqText":"wrong","value":0.06526881720430108,"rep":13.7,"yValue":-0.7},
 
 {"freqText":"fails","value":0.09259259259259259,"rep":15.65,"yValue":-0.85},
-{"freqText":"bugs","value":0.09259259259259259,"rep":14.6,"yValue":0},
+{"freqText":"bugs","value":0.09259259259259259,"rep":14.5,"yValue":0},
 {"freqText":"lazy","value":0.05555555555555555,"rep":14.5,"yValue":-1.5},
 {"freqText":"unlikely","value":0.05555555555555555,"rep":16.7,"yValue":-0.1},
 {"freqText":"bug","value":0.05555555555555555,"rep":16.6,"yValue":-1.05},
 {"freqText":"negative","value":0.07692307692307693,"rep":14.8,"yValue":-1.75},
 {"freqText":"impossible","value":0.06153846153846154,"rep":15,"yValue":-0.2},
-{"freqText":"bad","value":0.06153846153846154,"rep":15,"yValue":0.15},
+{"freqText":"bad","value":0.06153846153846154,"rep":14.8,"yValue":0.15},
 {"freqText":"limited","value":0.06153846153846154,"rep":16,"yValue":-1.05},
 {"freqText":"strange","value":0.06153846153846154,"rep":14.7,"yValue":-0.35},
 {"freqText":"issue","value":0.18181818181818182,"rep":16,"yValue":-0.5},
 {"freqText":"object","value":0.18181818181818182,"rep":16,"yValue":0},
 {"freqText":"error","value":0.11363636363636363,"rep":16.5,"yValue":-0.9},
-{"freqText":"problem","value":0.11363636363636363,"rep":15.2,"yValue":-1.25},
+{"freqText":"problem","value":0.11363636363636363,"rep":15,"yValue":-1.25},
 {"freqText":"primitive","value":0.16666666666666666,"rep":15.9,"yValue":-1.5},
 {"freqText":"limit","value":0.15384615384615385,"rep":14.7,"yValue":-0.8},
-{"freqText":"static","value":0.06818181818181818,"rep":15.6,"yValue":-1.65},
+{"freqText":"static","value":0.06818181818181818,"rep":15.7,"yValue":-1.7},
 {"freqText":"complex","value":0.06818181818181818,"rep":16.2,"yValue":-0.65},
 {"freqText":"absence","value":0.06818181818181818,"rep":16.2,"yValue":-0.25},
 {"freqText":"manipulate","value":0.06818181818181818,"rep":14.8,"yValue":-1},
@@ -1297,54 +1325,54 @@ votesAnswersText=
 {"freqText":"warning","value":0.045454545454545456+0.02,"rep":14.8,"yValue":-0.5},
 
 
-{"freqText":"bug","value":0.09345794392523364,"rep":20.7,"yValue":-0.3},
+{"freqText":"bug","value":0.09345794392523364,"rep":20.4,"yValue":-0.2},
 {"freqText":"fuzzy","value":0.08411214953271028,"rep":20.5,"yValue":-0.5},
-{"freqText":"unspecified","value":0.056074766355140186,"rep":20.1,"yValue":0.15},
+{"freqText":"unspecified","value":0.056074766355140186,"rep":18.1,"yValue":-0.1},
 {"freqText":"split","value":0.07142857142857142,"rep":17.5,"yValue":-1.40},
-{"freqText":"object","value":0.37383177570093457,"rep":18.5,"yValue":-0.8},
-{"freqText":"static","value":0.2616822429906542,"rep":19,"yValue":-1.5},
-{"freqText":"error","value":0.16822429906542055,"rep":17.9,"yValue":0.05},
+{"freqText":"object","value":0.34383177570093457,"rep":18.5,"yValue":-0.8},
+{"freqText":"static","value":0.2116822429906542,"rep":19,"yValue":-1.5},
+{"freqText":"error","value":0.15822429906542055,"rep":17.9,"yValue":0.05},
 {"freqText":"problem","value":0.1588785046728972,"rep":20,"yValue":-1.1},
-{"freqText":"issue","value":0.14953271028037382,"rep":20.8,"yValue":-0.8},
+{"freqText":"issue","value":0.12953271028037382,"rep":20.8,"yValue":-0.8},
 {"freqText":"bad","value":0.14018691588785046,"rep":20.7,"yValue":-1.35},
-{"freqText":"undefined","value":0.1308411214953271,"rep":18,"yValue":-1.2},
-{"freqText":"sob","value":0.2222222222222222,"rep":20.4,"yValue":-1.7},
-{"freqText":"invalidate","value":0.18518518518518517,"rep":19.2,"yValue":-0.15},
+{"freqText":"undefined","value":0.1008411214953271,"rep":18,"yValue":-1.2},
+{"freqText":"sob","value":0.2022222222222222,"rep":20.4,"yValue":-1.7},
+{"freqText":"invalidate","value":0.14518518518518517,"rep":19.8,"yValue":0},
 {"freqText":"fail","value":0.14814814814814814,"rep":17.2,"yValue":-0.35},
-{"freqText":"ambiguous","value":0.1111111111111111,"rep":19.5,"yValue":-0.3},
+{"freqText":"ambiguous","value":0.1011111111111111,"rep":18.8,"yValue":-0.3},
 {"freqText":"issues","value":0.1111111111111111,"rep":17.6,"yValue":-1},
 
 {"freqText":"abruptly","value":0.2037037037037037,"rep":22.5,"yValue":-1.8},
 {"freqText":"object","value":0.2037037037037037,"rep":22,"yValue":-0.6},
 {"freqText":"limited","value":0.14814814814814814,"rep":22.5,"yValue":-0.9},
-{"freqText":"static","value":0.1111111111111111,"rep":22.4,"yValue":-1.5},
-{"freqText":"problem","value":0.1111111111111111,"rep":22,"yValue":0},
+{"freqText":"static","value":0.1111111111111111,"rep":22.7,"yValue":-1.5},
+{"freqText":"problem","value":0.1111111111111111,"rep":21.9,"yValue":0},
 {"freqText":"interrupt","value":0.09259259259259259,"rep":22.1,"yValue":-1.3},
-{"freqText":"issues","value":0.09259259259259259,"rep":22.4,"yValue":-0.20},
+{"freqText":"issues","value":0.09259259259259259,"rep":22.1,"yValue":-0.20},
 {"freqText":"error","value":0.07407407407407407,"rep":23,"yValue":-1.1},
-{"freqText":"wrong","value":0.05555555555555555,"rep":21.5,"yValue":-0.20},
+{"freqText":"wrong","value":0.05555555555555555,"rep":21.3,"yValue":-0.25},
 {"freqText":"confusing","value":0.037037037037037035+0.02,"rep":21.8,"yValue":-1.10},
 
 {"freqText":"problem","value":0.25333333333333335,"rep":24.3,"yValue":-0.1},
-{"freqText":"limit","value":0.18666666666666668,"rep":24.3,"yValue":-0.9},
+{"freqText":"limit","value":0.18666666666666668,"rep":24.2,"yValue":-0.9},
 {"freqText":"split","value":0.17333333333333334,"rep":24.6,"yValue":-1.6},
 {"freqText":"object","value":0.16,"rep":25,"yValue":-0.6},
-{"freqText":"error","value":0.13333333333333333,"rep":24,"yValue":-1.3},
+{"freqText":"error","value":0.13333333333333333,"rep":24,"yValue":-1.35},
 {"freqText":"problems","value":0.10666666666666667,"rep":25.3,"yValue":-0.3},
-{"freqText":"hard","value":0.09333333333333334,"rep":23.7,"yValue":-0.58},
+{"freqText":"hard","value":0.09333333333333334,"rep":23.5,"yValue":-0.58},
 {"freqText":"negative","value":0.09333333333333334,"rep":24.5,"yValue":-1.1},
-{"freqText":"limited","value":0.09333333333333334,"rep":24,"yValue":-0.35},
-{"freqText":"static","value":0.08,"rep":24.8,"yValue":-1.9},
+{"freqText":"limited","value":0.09333333333333334,"rep":23.5,"yValue":-0.35},
+{"freqText":"static","value":0.08,"rep":24.6,"yValue":-1.8},
 
 {"freqText":"object","value":0.3669064748201439,"rep":27,"yValue":-1.9},
 {"freqText":"problem","value":0.2446043165467626,"rep":26.8,"yValue":-1},
 {"freqText":"error","value":0.22302158273381295,"rep":27,"yValue":-0.3},
 {"freqText":"primitive","value":0.15827338129496402,"rep":27,"yValue":-0.61},
-{"freqText":"issue","value":0.12949640287769784,"rep":27.6,"yValue":0},
+{"freqText":"issue","value":0.12949640287769784,"rep":27.9,"yValue":0},
 {"freqText":"static","value":0.12949640287769784,"rep":27,"yValue":-1.2},
-{"freqText":"problems","value":0.07913669064748201,"rep":26.4,"yValue":0},
+{"freqText":"problems","value":0.07913669064748201,"rep":26.6,"yValue":0},
 {"freqText":"hard","value":0.07913669064748201,"rep":28,"yValue":-1.2},
-{"freqText":"negative","value":0.07913669064748201,"rep":26,"yValue":-1.3},
+{"freqText":"negative","value":0.07913669064748201,"rep":25.8,"yValue":-1.3},
 {"freqText":"bug","value":0.06474820143884892,"rep":27.4,"yValue":-1.4}
 ]
 
@@ -1359,7 +1387,7 @@ update(this.id);  });
 update(this.id);  });
 
   document.getElementById("questions").checked = true;
-  document.getElementById("votes").style.backgroundColor = "#F48024";
+  document.getElementById("votes").style.backgroundColor = "white";
   document.getElementById("reputations").style.backgroundColor = "darkgrey";
 
 function selectValue(id)
@@ -1391,6 +1419,8 @@ var y = d3.scaleLinear()
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  
 var flag = 0;
 
   var linkValue = 0;
@@ -1404,8 +1434,8 @@ function update(id)
 {
 if(id)
 {
- document.getElementById("reputations").style.backgroundColor = "#F48024";
- document.getElementById("votes").style.backgroundColor = "#F48024";
+ document.getElementById("reputations").style.backgroundColor = "white";
+ document.getElementById("votes").style.backgroundColor = "white";
  document.getElementById(id).style.backgroundColor = "darkgrey";
 }
 
