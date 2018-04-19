@@ -13,6 +13,9 @@
 body {
   background-color: #EEEEEE;
 }
+text {
+font-family: 'Roboto', sans-serif;
+}
 button {
   position: absolute;
   left: 10px;
@@ -82,8 +85,8 @@ h1 {
 
           <div style="text-align:right;padding-right:800px;">
          
-            <input type="button" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
-            <input type="button"  id="votes" value="Votes" onclick="update(this.id)"></imput>
+            <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
+            <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  id="votes" value="Votes" onclick="update(this.id)"></imput>
       
             <input type="checkbox" id="questions" onclick="selectValue(this.id)"> Questions</input>
             <input type="checkbox" id="answers" onclick="selectValue(this.id)"> Answers</input>
@@ -1387,7 +1390,7 @@ update(this.id);  });
 update(this.id);  });
 
   document.getElementById("questions").checked = true;
-  document.getElementById("votes").style.backgroundColor = "white";
+  document.getElementById("votes").style.backgroundColor = "#F48024";
   document.getElementById("reputations").style.backgroundColor = "darkgrey";
 
 function selectValue(id)
@@ -1434,8 +1437,8 @@ function update(id)
 {
 if(id)
 {
- document.getElementById("reputations").style.backgroundColor = "white";
- document.getElementById("votes").style.backgroundColor = "white";
+ document.getElementById("reputations").style.backgroundColor = "#F48024";
+ document.getElementById("votes").style.backgroundColor = "#F48024";
  document.getElementById(id).style.backgroundColor = "darkgrey";
 }
 
