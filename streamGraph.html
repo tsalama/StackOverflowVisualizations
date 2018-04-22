@@ -2,11 +2,10 @@
 <head>
   <meta charset="utf-8">
   <script src="d3.min.js"></script>
-   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:100i|Roboto:100" rel="stylesheet">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-orange.min.css" />
-
   <script src="d3-tip.js"></script>
   <style>
  
@@ -45,6 +44,7 @@ h1 {
   line-height: 0.1em;
   font-weight: bold;
 }
+
 </style>
 </head>
 <body>
@@ -81,10 +81,14 @@ h1 {
 </svg>
 
           <div style="text-align:right;padding-right:800px;">
-         
-            <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
-            <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  id="votes" value="Votes" onclick="update(this.id)"></input>
-      
+       
+            
+                <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
+            <input type="button"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="votes" value="Votes" onclick="update(this.id)"></imput>
+            <!--
+            <input type="button" id="reputations" value="Reputation" onclick="update(this.id)"></input> 
+            <input type="button"  id="votes" value="Votes" onclick="update(this.id)"></imput>
+      -->
             <input type="checkbox" id="questions" onclick="selectValue(this.id)"> Questions</input>
             <input type="checkbox" id="answers" onclick="selectValue(this.id)"> Answers</input>
            </div>   <!-- <input type="checkbox" id="monthly" onclick="selectValue(this.id)"> Monthly</input>-->
@@ -801,7 +805,6 @@ votesQuestionText=[
 {"freqText":"correct","value":0.0759493670886076,"rep":8.4,"yValue":2.1},
 
 {"freqText":"support","value":0.056338028169014086,"rep":9.8,"yValue":3},//
-{"freqText":"right","value":0.09859154929577464,"rep":1.9,"yValue":1.20},//
 {"freqText":"fluent","value":0.08450704225352113,"rep":12,"yValue":1.80},
 {"freqText":"fine","value":0.09859154929577464,"rep":11,"yValue":1.3},//
 {"freqText":"like","value":0.7534246575342466-0.1,"rep":10.7,"yValue":2},//
@@ -1392,6 +1395,7 @@ update(this.id);  });
 
 function selectValue(id)
 {
+
   document.getElementById("questions").checked = false;
   document.getElementById("answers").checked = false;
   document.getElementById(id).checked = true;
@@ -1434,13 +1438,13 @@ function update(id)
 {
 if(id)
 {
- document.getElementById("reputations").style.backgroundColor = "#F48024";
+   document.getElementById("reputations").style.backgroundColor = "#F48024";
  document.getElementById("votes").style.backgroundColor = "#F48024";
  document.getElementById(id).style.backgroundColor = "darkgrey";
 }
 
 
-  	if(d3.select("#questions").property("checked")){
+    if(d3.select("#questions").property("checked")){
       if (linkValue==0)
       {  
         adjustVal=320;
@@ -1464,7 +1468,7 @@ if(id)
         x.domain([-5, 40]);
   
       }
-  	} 
+    } 
     else if(d3.select("#answers").property("checked")){
       if (linkValue==0)
       {
@@ -1490,7 +1494,7 @@ if(id)
 
       }
 
-  	} 
+    } 
   document.getElementById('reputations').onclick = function() {
         linkValue = 0;
         xLabel = "Reputation";
@@ -1503,7 +1507,7 @@ if(id)
         x.domain([-500, 10500]);
 
 
-  	} 
+    } 
     document.getElementById('votes').onclick = function() {
         adjustVal=1;
         xLabel = "Votes";
@@ -1517,7 +1521,7 @@ if(id)
       y.domain([-4.5, 3.5]);
       x.domain([0, 40]);
 
-  	} 
+    } 
    
   var yAxis = d3.axisLeft(y);
   var yAxis2 = d3.axisRight(y);
