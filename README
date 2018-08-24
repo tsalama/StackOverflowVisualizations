@@ -2,6 +2,8 @@
 - Arizona State University - CSE 578
 - Alisa Pinchuk, Dan Gannon, Tarek Salama
 
+# Stack Overflow Data Visualizations
+
 This project explores a Stack Overflow dataset through the creation of four useful and distinct data visualizations. Its use provides data scientists with the tool to efficiently explore the website's underlying data and find potentially meaningful trends.
 
 Launch the project through https://tsalama.github.io/StackOverflowVisualizations/ or through "index.html" using Mozilla Firefox to begin exploring the data visualizations.
